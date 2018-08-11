@@ -10,7 +10,7 @@ export function signup(values, callback) {
         url: `${constants.BASE_URL}/users/register`,
         data: {'email': values.email, 'password': values.password}
     };
-
+    console.log(requestParams);
     return networkCallWithCallback(requestParams, actionTypes.SIGNUP_SUCCESS, actionTypes.SIGNUP_FAILURE, callback);
 
 }
