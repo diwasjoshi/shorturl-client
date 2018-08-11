@@ -1,0 +1,902 @@
+
+$orange :#e36c09;
+$default-color:coral;
+$black:#000;
+$white:#fff;
+$width: 100%;
+$height:800px;
+$font-stack:sans-serif;
+$font-new: "Times New Roman", Times, serif;
+$font-text:Arial;
+
+//
+// #flyoutMenu {
+//   text-align: center;
+//   width: 20vw;
+//   height: 100vh;
+//   background-color: #CFD8DC;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   transition: transform 0.3s cubic-bezier(0, 0.52, 0, 1);
+//   overflow: scroll;
+//   z-index: 1000;
+// }
+//
+// #flyoutMenu.hide {
+//   transform: translate3d(-100vw, 0, 0);
+// }
+//
+// #flyoutMenu.show {
+//   transform: translate3d(0vw, 0, 0);
+//   overflow: hidden;
+// }
+//
+// #flyoutMenu h2 a {
+//   color: #333;
+//   margin-left: 15px;
+//   text-decoration: none;
+// }
+//
+// #flyoutMenu h2 a:hover {
+//   text-decoration: underline;
+// }
+// #roundButton:hover {
+//   background-color:" #96d9ff";
+//   cursor: pointer;
+//   border-color: "#003557";
+// }
+//   #roundButton:active {
+//   border-color: "#003557";
+//   background-color: "#fff";
+// }
+//
+// div.companySearch{
+//   width: 60%;
+//   margin: auto;
+// }
+//
+// .btn.companySearch {
+//   margin: auto;
+// }
+
+@mixin padding($top, $right, $bottom, $left) {
+  padding: $top $right $bottom $left;
+}
+//
+//
+// #testcard {
+//     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+//     transition: 0.3s;
+//     background: #fff;
+//     border-radius: 5px; /* 5px rounded corners */
+// }
+//
+// /* Add rounded corners to the top left and the top right corner of the image */
+// #testimage {
+//     border-radius: 5px 5px 0 0;
+// }
+
+@mixin font-size($sizeValue) {
+  font-size: $sizeValue + rem;
+}
+@mixin headings($from:1,$to:6){
+  @for $i from $from through $to{
+      h#{$i}{
+        @content
+      }
+    }
+}
+@include headings(){
+    font-family: $font-stack;
+}
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+@mixin rounded($radius: 0.5em) {
+  -webkit-border-radius: .5em;
+  -moz-border-radius: .5em;
+  border-radius: .5em;
+}
+.farmer_details{
+  @include headings()
+  {
+   @include font-size(1.5);
+     margin-top:2%;
+     font-family: $font-stack;
+     font-weight:500;
+     margin-left:10%;
+    @include padding(2%,0,0,0);
+   }
+  @include padding(2%,0,0,0);
+}
+.farmer-name{
+  @include font-size(1.5);
+}
+
+.farmer{
+
+  width:85%;
+  height:60%;
+margin-left:5%;
+  -moz-box-shadow: 0 0 2px #ccc;
+  -webkit-box-shadow: 0 0 2px #ccc;
+  box-shadow: 0 0 2px #ccc;
+
+}
+
+
+body {
+    background: #f9fafb;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    min-height: 100%;
+}
+#app-header{
+  height: 70px;
+}
+#header-app-name{
+  padding: 10px;
+}
+.login_panel{
+    width: 100%;
+    margin-top:3%;
+    position: absolute;
+    overflow: scroll;
+    top: 70px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.login {
+
+    width: 24.7%;
+    height:60%;
+    background: #fff;
+    box-shadow: 20px 20px 30px 1px #ccc;
+    margin: 0 auto;
+    border-radius: 10px
+}
+
+.login form {
+
+    background: transparent;
+    width: 100%;
+    height:350px;
+    background-color: transparent;
+
+}
+
+
+.logo {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0px 0px;
+}
+.form{
+  padding: 4%
+}
+
+.errors {
+    margin-left: 30%;
+    color: red;
+    text-transform: capitalize;
+
+}
+.email{
+  color: #e36c09;
+  margin-left:5%;
+}
+.password{
+  color: #e36c09;
+  margin-left:5%;
+}
+button.login_btn{
+  margin-left:0%;
+  background-color:#2196F3;
+  color: white;
+  width:100%;
+  height:45px;
+  font-size: 100%;
+  -moz-box-shadow: 1px 1px 5px 6px #ccc;
+  -webkit-box-shadow: 1px 1px 5px 6px #ccc;
+  box-shadow: 2px 2px #ccc;
+  border-radius:25px;
+}
+button.updt_btn{
+  margin-left:7%;
+  margin-top:5%;
+  background-color:fade-out($orange,0.3);
+  color: white;
+  width:80%;
+  height:45px;
+@include font-size(1.5);
+  -moz-box-shadow: 1px 1px 5px 6px #ccc;
+  -webkit-box-shadow: 1px 1px 5px 6px #ccc;
+  box-shadow: 2px 2px #ccc;
+  border-radius:25px;
+  text-transform: capitalize;
+}
+button.update{
+  margin-left:25%;
+  margin-top:15%;
+  background-color:fade-out($orange,0.3);
+  color: white;
+  width:50%;
+  height:45px;
+@include font-size(1.5);
+  -moz-box-shadow: 1px 1px 5px 6px #ccc;
+  -webkit-box-shadow: 1px 1px 5px 6px #ccc;
+  box-shadow: 2px 2px #ccc;
+  border-radius:25px;
+  text-transform: capitalize;
+}
+.btn:hover
+{
+background-color:	#FF7F50;
+color:#fff;
+
+}
+.register{
+  margin-left:37%;
+  margin-bottom:10%;
+  color:#e36c09;
+  /* incomplete css property */
+  /* padding-:5%; */
+  font-size:15px;
+
+}
+.signup{
+  width:50%;
+  margin-top:3%;
+  position: fixed;
+  height:600px;
+  background-color:fade-out($white,0.3);
+  margin-left:25%;
+  padding:10%;
+}
+.error_panel{
+height:50%;
+}
+.input_new
+{
+  display: none;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0px 0px;
+}
+.form{
+  padding: 4%
+}
+
+
+.logo {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0px 0px;
+}
+.form{
+  padding: 4%
+}
+
+#card{
+
+  width:50%;
+  height:100%;
+  overflow: scroll;
+  background-color:$white;
+  margin-left:60%;
+}
+.modal-header{
+  @include headings(){
+      color:$white;
+      text-align: center;
+      background-color:fade-out($orange,0.2);
+    }
+ height:15%;
+}
+.header{
+  @include headings(){
+      color:$white;
+      text-align: center;
+      background-color:fade-out($orange,0.2);
+    }
+ height:15%;
+ width:100%;
+ margin-top:-20%;
+
+}
+.updateform{
+
+  width:50%;
+  height:100%;
+  @include padding(4%,4%,4%,4%);
+  margin-left:28%;
+  box-shadow: 0 4px 8px 0 #e36c09, 0 6px 20px 0 #e36c09;
+  overflow: scroll;
+  background-color:$white;
+}
+#selcountry{
+  display:block;
+  width:90%;
+  height:8%;
+
+}
+#selstate{
+  display:block;
+  width:90%;
+  height:8%;
+
+}
+#selcity{
+  display:block;
+  width:90%;
+  height:8%;
+
+}
+#selcompany{
+  display:block;
+  width:90%;
+  height:8%;
+
+}
+.person{
+ margin-left:40%;
+}
+.personinput{
+  margin-left:40%;
+}
+.name{
+  color:#e36c09;
+  width:20%;
+}
+#dvPreview
+{
+   filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
+   min-height: 400px;
+   min-width: 400px;
+   display: none;
+   background-color: #fff;
+}
+
+.file_input
+{
+  cursor: pointer;
+  margin-left:30%;
+  margin-top:2%;
+  width:39%;
+  background-color:#aaa;
+
+}
+
+.imgPreview
+{
+  text-align: center;
+  margin:0 auto;
+  height: 200px;
+  width:400px;
+  background-color:#fff;
+  border:groove 1px;
+}
+  img
+  {
+    width: 100%;
+    height: 100%;
+}
+.preview_text
+{
+  width: 100%;
+  margin-top:70px;
+}
+
+.centerText
+{
+  text-align: center;
+  width: 500px;
+}
+.country{
+  font-size:15px;
+
+}
+.state{
+  font-size:15px;
+
+}
+.city{
+  font-size:15px;
+
+}
+.comp{
+  font-size:15px;
+
+}
+.update{
+  width:30%;
+  background-color:#e36c09;
+  margin-top:20%;
+}
+.labelname{
+  color:#e36c09;
+  font-size:18px;
+  @include padding(0,0,0,0);
+}
+::placeholder{
+color:#333;
+
+}
+.user_label{
+  @include font-size(1.5);
+  color:lighten($orange,10%);
+  padding-left:2.5%;
+  font-weight:500;
+
+
+}
+.user_text{
+  @include font-size(1.1);
+  @include padding(0,0,0,4%);
+  font-family: $font-text;
+}
+.user-label{
+  @include font-size(1.5);
+  color:lighten($orange,10%);
+  padding-left:2.5%;
+  font-weight:500;
+  font-family: "MS Serif", "New York", serif;
+  margin-left:2%;
+}
+.user-text{
+  @include font-size(1.1);
+  @include padding(0,0,0,4%);
+  font-family: $font-text;
+}
+
+.col s5{
+  margin-left:60%;
+}
+.row{
+  padding-top:1%;
+  padding-left:2%;
+
+}
+.farmers_info{
+  width:100%;
+  height: 100%;
+background-color:$white;
+  position:relative;
+  padding:0;
+}
+.registered_farmers{
+  width:30%;
+  height:450px;
+  float: left;
+  @include headings(){
+    color:$black;
+    text-align: center;
+    font-family: "MS Serif", "New York", serif;
+      font-weight:lighter;
+      @include font-size(2.5);
+    }
+
+}
+
+.farmer-detail{
+  width:35%;
+  height:800px;
+  float:left;
+  border-left:groove 1px #333 ;
+  border-right:groove 1px #333 ;
+
+}
+
+.new_farmer{
+
+  width:35%;
+  height:460px;
+  float:right;
+  @include headings(){
+    font-family:"MS Serif", "New York", serif;
+    text-align: center;
+    @include font-size(2.5);
+    font-weight:400;
+};
+  margin-top:6%;
+
+
+}
+.list-group-item{
+  font-size:$font-stack;
+  color:#000;
+
+
+}
+.card-panel{
+  height:100%;
+  width:80%;
+  margin-left:8%;
+}
+.validate{
+  width:100%;
+}
+.btn{
+background-color:fade-out($black,0.2);
+color: $white;
+margin-left:40%;
+margin-bottom:40%;
+}
+.img_preview_new
+{
+  text-align: center;
+  margin:0 auto;
+  height: 200px;
+  width: 200px;
+  border:groove 1px;
+  border-radius: 50%;
+}
+.farmer_name{
+  background-color:fade-out($black,0.3);
+  color:$white;
+  text-align: center;
+  margin-bottom:-6%;
+
+
+}
+
+.profile_image{
+
+margin-top:-30%;
+}
+.profile-image{
+
+  padding-top:-10%;
+
+
+}
+.farmer_items{
+@include padding(15%,0,0,2%);
+width:100%;
+height:100%;
+}
+.prev{
+
+  margin-left: 40%;
+  @include font-size(1.4);
+}
+.next{
+  margin-top:-2.2%;
+  margin-left:50%;
+  @include font-size(1.4);
+
+}
+.farmer-name{
+@include padding(0,0,0,4%);
+}
+.lat{
+  border:groove 2px;
+}
+.lng{
+    border:groove 2px;
+}
+.azi{
+    border:groove 2px;
+}
+
+.modal_image{
+width:50%;
+height:100%;
+object-fit:cover;
+
+}
+.image_data{
+  width:50%;
+  height:100%;
+}
+.image_body{
+  width:50%;
+  height:80%;
+}
+.img_modal{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.image-data{
+  width:50%;
+  margin-top:-50%;
+  margin-left:53%;
+  @include padding(0,0,0,2%);
+  @include font-size(2.5);
+  @include headings{
+    @include font-size(2.3);
+    font-family: $font-stack;
+    font-weight:500;
+  }
+
+  }
+.comp_modal{
+  width:65%;
+  height:100%;
+  margin-left:50%;
+  margin-top:28%;
+  background-color:$white;
+  border:groove 2px;
+}
+.modal_div{
+  width:100%;
+}
+#close_icon{
+color:$black;
+@include font-size(3);
+  cursor: pointer;
+
+}
+.icon-body{
+  float:right;
+  margin-top:-40%;
+  margin-left:39%;
+  background-color:transparent;
+}
+
+.top-right{
+    position: absolute;
+  margin-top:-40%;
+ margin-left:40%;
+}
+#icon_next{
+    @include font-size(3);
+      color:$orange;
+      float: right;
+      cursor: pointer;
+}
+.top-left{
+  position: absolute;
+margin-top:-40%;
+
+}
+#icon_previous{
+    @include font-size(3);
+      color:$orange;
+      float:left;
+      cursor: pointer;
+}
+.all_companies_heading{
+  @include font-size(2.5);
+  margin-left:3%;
+  font-family:$font-new;
+}
+.company_details{
+  @include font-size(2.8);
+  font-family:$font-new;
+  text-align: center;
+}
+.user_companies{
+  @include font-size(2.5);
+  font-family:$font-new;
+
+}
+#search_button{
+  background-color:saturation($black);
+}
+.loading{
+  @include font-size(2);
+}
+.heading_detail{
+  @include font-size(1.6);
+  font-family: $font-new;
+  @include padding(0,0,0,6%);
+}
+.farmer_image{
+  margin-left:30%;
+  margin-top:5%;
+}
+.selfarmer_name{
+  @include font-size(2.5);
+  text-align :center;
+  text-transform: capitalize;
+  width:$width;
+  color:$white;
+  @include padding(2%,0,0,0);
+  font-family: "MS Serif", "New York", serif;
+}
+.image-card{
+  width:50%;
+  height:100px;
+
+}
+.plot-card{
+  height:100px;
+  width:50%;
+  float:right;
+  margin-top:-24%;
+}
+.card_title{
+  @include font-size(1.6);
+  font-family: $font-new;
+  @include padding(0,0,0,2%);
+  margin-left:5%;
+}
+.card_text{
+  @include font-size(1.1);
+  margin-left:8%;
+
+}
+.farmer-items{
+  margin-top:10%;
+  height:100%;
+  width:90%;
+  overflow-y:scroll;
+}
+.detail_header{
+  background-color:fade-out($orange,0.4);
+}
+.userprofile_card{
+  width:30%;
+  height:0.2%;
+  margin-left:35%;
+  margin-top:1%;
+
+
+}
+.img_cardmedia{
+  height:250px;
+  background-color:fade-out($orange,0.3);
+}
+.img_preview{
+  height:250px;
+  width:100%;
+}
+.user-name
+{
+  color:fade-out($black,0.5);
+  font-family: "MS Serif", "New York", serif;
+  @include font-size(2.5);
+  margin-top:-1%;
+  text-align: center;
+  margin-left:-4%;
+}
+.update_modal{
+  width:90%;
+  height:100%;
+  margin-left:50%;
+  margin-top:28%;
+  overflow: scroll;
+}
+.card_text{
+  height:500px;
+}
+#icon_close{
+  margin-left:100%;
+  font-size:25px;
+}
+.opacity{
+  writing-mode:tb-rl;
+  color:#000;
+  margin-left:0.8%;
+  margin-top:-90px;
+  font-size:14px;
+  -webkit-transform: rotate(180deg);
+-moz-transform: rotate(180deg);
+-ms-transform: rotate(180deg);
+-o-transform: rotate(180deg);
+transform: rotate(180deg);
+float: left;
+}
+.select-field{
+
+margin-top:-1.5%;
+  color:#ffff;
+
+}
+.menu-item{
+  color:#000;
+}
+#close-icn{
+float: right;
+}
+.companydetails-modal{
+  background-color: $white;
+  width:90%;
+  height:100%;
+  margin-left:50%;
+  margin-top:28%;
+  overflow: scroll;
+}
+.btn waves-effect{
+  margin-left:30%;
+}
+.search-button{
+  margin-left:50%;
+  background-color:fade-out($orange,0.2);
+  width:25%;
+  height:40%;
+  color:$white;
+  @include font-size(1.5);
+}
+#company_card{
+  width:80%;
+  height:350px;
+  margin-top:5%;
+}
+.company-names{
+  font-family: "MS Serif", "New York", serif;
+}
+.profile-pic{
+  margin-top: -5%;
+}
+container {
+    position: relative;
+    width: 50%;
+}
+
+.image {
+  opacity: 1;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #ccc;
+  color: black;
+  font-size: 16px;
+  padding: 16px 32px;
+  cursor: pointer;
+}
+.profile-pic{
+    max-width:100%;
+    max-height:280px;
+
+}
+
+.p-image {
+  position: absolute;
+  top: 167px;
+  right: 30px;
+  color: #666666;
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.p-image:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.upload-button {
+  font-size: 1.2em;
+}
+
+.upload-button:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+  color: #999;
+}

@@ -1,0 +1,19 @@
+import axios from 'axios';
+import * as constants from '../constants/serviceUrls'
+import * as actionTypes from '../constants/actionTypes';
+import {networkCall} from '../utils/networkutils';
+
+export function makeUrl({ url, accessEmails, allowAccessControl, expiryDate }) {
+    var bodyFormData = { url };
+    if(allowAccessControl)
+      bodyFormData['privateEmails'] = accessEmails.split(',');
+    if(expiryDate)
+      bodyFormData['expiryDate'] = expiryDate;
+
+    const requestParams = {
+        method: 'post',
+        url: `${constants.BASE_URL}/makeurl`,
+        data: bodyFormData
+    };
+    return networkCall(requestParams, actionTypes.MAKE_URLS_SUCCESS, actionTypes.MAKE_URLS_FAILURE);
+}
