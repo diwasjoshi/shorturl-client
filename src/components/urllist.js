@@ -1,9 +1,9 @@
 import React from "react";
-import UrlItem from './urlitem';
+//import UrlItem from './urlitem';
 
 
 const UrlList = (props) => {
-    const urlItems = props.urls.map((url, index) => {
+    /*const urlItems = props.urls.map((url, index) => {
         console.log(url);
         return (
             <UrlItem
@@ -11,10 +11,10 @@ const UrlList = (props) => {
                 key={index}
             />
         );
-    })
+    })*/
     return (
         <div>
-            {urlItems}
+            list
         </div>
     );
 };
