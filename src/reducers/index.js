@@ -7,6 +7,7 @@ import reducerUserUrls from './userurls';
 import makeUrl from './makeurl';
 import urlitemclick from './urlitemclick';
 import urlanalytics from './urlanalytics';
+import urlredirection from './urlredirection';
 
 const rootReducer = combineReducers({
     form: formReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     reducerUserUrls,
     makeUrl,
     urlitemclick,
-    urlanalytics
+    urlanalytics,
+    urlredirection
 });
 
 export default rootReducer;

@@ -3,12 +3,20 @@ import * as constants from '../constants/serviceUrls'
 import * as actionTypes from '../constants/actionTypes';
 import {networkCall} from '../utils/networkutils';
 
-export function makeUrl({ url, accessEmails, allowAccessControl, expiryDate }) {
+export function makeUrl({ url, accessEmails, allowAccessControl, allowExpiryDate, expiryDate, clearData }) {
+    if(clearData){
+      return (dispatch) => {
+        dispatch({
+          type: actionTypes.CLEAR_DATA,
+          payload: {},
+        })
+      }
+    }
     var bodyFormData = { url };
     if(allowAccessControl)
       bodyFormData['privateEmails'] = accessEmails.split(',');
-    if(expiryDate)
-      bodyFormData['expiryDate'] = expiryDate;
+    if(allowExpiryDate)
+      bodyFormData['expiryDate'] = expiryDate.toString();
 
     const requestParams = {
         method: 'post',

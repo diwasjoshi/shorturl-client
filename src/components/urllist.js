@@ -1,20 +1,20 @@
 import React from "react";
-//import UrlItem from './urlitem';
+import UrlItem from './urlitem';
 
 
 const UrlList = (props) => {
-    /*const urlItems = props.urls.map((url, index) => {
-        console.log(url);
+    const urlItems = props.urls.map((url, index) => {
+
         return (
             <UrlItem
                 data = {url}
                 key={index}
             />
         );
-    })*/
+    })
     return (
         <div>
-            list
+            {urlItems}
         </div>
     );
 };

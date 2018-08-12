@@ -9,73 +9,12 @@ $font-stack:sans-serif;
 $font-new: "Times New Roman", Times, serif;
 $font-text:Arial;
 
-//
-// #flyoutMenu {
-//   text-align: center;
-//   width: 20vw;
-//   height: 100vh;
-//   background-color: #CFD8DC;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   transition: transform 0.3s cubic-bezier(0, 0.52, 0, 1);
-//   overflow: scroll;
-//   z-index: 1000;
-// }
-//
-// #flyoutMenu.hide {
-//   transform: translate3d(-100vw, 0, 0);
-// }
-//
-// #flyoutMenu.show {
-//   transform: translate3d(0vw, 0, 0);
-//   overflow: hidden;
-// }
-//
-// #flyoutMenu h2 a {
-//   color: #333;
-//   margin-left: 15px;
-//   text-decoration: none;
-// }
-//
-// #flyoutMenu h2 a:hover {
-//   text-decoration: underline;
-// }
-// #roundButton:hover {
-//   background-color:" #96d9ff";
-//   cursor: pointer;
-//   border-color: "#003557";
-// }
-//   #roundButton:active {
-//   border-color: "#003557";
-//   background-color: "#fff";
-// }
-//
-// div.companySearch{
-//   width: 60%;
-//   margin: auto;
-// }
-//
-// .btn.companySearch {
-//   margin: auto;
-// }
+
 
 @mixin padding($top, $right, $bottom, $left) {
   padding: $top $right $bottom $left;
 }
-//
-//
-// #testcard {
-//     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-//     transition: 0.3s;
-//     background: #fff;
-//     border-radius: 5px; /* 5px rounded corners */
-// }
-//
-// /* Add rounded corners to the top left and the top right corner of the image */
-// #testimage {
-//     border-radius: 5px 5px 0 0;
-// }
+
 
 @mixin font-size($sizeValue) {
   font-size: $sizeValue + rem;
@@ -142,12 +81,63 @@ body {
     min-height: 100%;
 }
 #app-header{
-  height: 70px;
+  height: 100px;
+  background-color: #00C1FF !important;
+  border-bottom: 1px solid rgba(228, 228, 228, 0.23);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10);
 }
-#header-app-name{
-  padding: 10px;
+#app-header #header-section{
+  text-align: center;
+  width: 95%;
 }
-.login_panel{
+#app-header #menuoptions{
+  padding-top: 15px;
+}
+#app-header #menuoptions a{
+  color: #fff !important;
+  font-size: 20px !important;
+  display: block !important;
+}
+#app-header #header-section,
+#app-header #menuoptions,{
+  display: inline-block;
+  vertical-align: top;
+}
+#app-header #main-heading{
+  font-size: 50px;
+}
+.url_generation_panel,
+.login_panel,
+#userUrlsSection,
+.UrlAnalyitcsPage{
+  background-color: #FFF !important;
+  width: 50%;
+  margin: auto;
+  box-shadow: 20px 20px 30px 1px #ccc;
+  border-radius: 10px;
+  height: calc(100% - 100px);
+}
+.userURLPage .create-url{
+  margin-top: 20px;
+  margin: auto;
+    text-align: center;
+}
+.userURLPage{
+  padding-top: 20px;
+}
+.userURLPage .create-url .btn{
+  width: 500px;
+  margin: 0;
+}
+.userURLPage .cont{
+  margin-top: 30px;
+}
+.userURLPage .cont .error-heading{
+  color: #CCCC;
+    text-align: center;
+    font-size: 40px;
+}
+.logisn_panel{
     width: 100%;
     margin-top:3%;
     position: absolute;
@@ -157,16 +147,54 @@ body {
     left: 0;
     right: 0;
 }
-
-.login {
-
-    width: 24.7%;
-    height:60%;
-    background: #fff;
-    box-shadow: 20px 20px 30px 1px #ccc;
-    margin: 0 auto;
-    border-radius: 10px
+#madeUrlSection .card,
+.UrlAnalyitcsPage .card{
+  width: 80%;
+  box-shadow: 0 1px 0px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 1px 1px -2px rgba(0,0,0,0.2);
+  margin: auto;
 }
+#madeUrlSection{
+  padding-top: 40px;
+}
+#madeUrlSection .lab{
+  padding-left: 10px;
+    padding-top: 5px;
+    color: #BBB;
+
+}
+.UrlAnalyitcsPage .sect{
+  text-align: center;
+}
+.UrlAnalyitcsPage .sect span{
+  margin-left: 20px;
+  font-size: 45px;
+  color: #777;
+}
+.UrlAnalyitcsPage .horizontal{
+  margin-top: 35px;
+}
+.UrlAnalyitcsPage .horizontal .graph{
+  display: inline-block;
+  margin-left: 40px;
+}
+.UrlAnalyitcsPage .horizontal .graph .title{
+  color: #999;
+}
+#madeUrlSection .btn{
+  margin-left: 5% !important;
+  margin-top: 5% !important;
+}
+.react-datetime-picker__button{
+  border: none !important;
+}
+.make_url .input{
+  display: inline-block;
+  margin-right: 20px;
+}
+.react-datetime-picker__button button{
+  margin-top: -15px;
+}
+
 
 .login form {
 
@@ -192,6 +220,9 @@ body {
     color: red;
     text-transform: capitalize;
 
+}
+.urlitem #madeUrlSection .btn{
+  margin: 3% 2% !important;
 }
 .email{
   color: #e36c09;
@@ -381,7 +412,11 @@ height:50%;
   background-color:#aaa;
 
 }
-
+.make_url .submit_btn,
+.make_url .btn{
+  margin-left: 30px;
+    margin-bottom: 0;
+}
 .imgPreview
 {
   text-align: center;

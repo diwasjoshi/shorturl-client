@@ -7,7 +7,7 @@ import {withRouter, Redirect} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import Checkbox from '@material-ui/core/Checkbox';
 import Calendar from 'react-datetime-picker';
-
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 
 class MakeUrl extends Component {
@@ -17,14 +17,18 @@ class MakeUrl extends Component {
             url: "",
             accessEmails: "",
             allowAccessControl: false,
-            expiryDate: null
+            expiryDate: null,
+            clearData: false,
+            allowExpiryDate: false
         };
 
         this.onSave = this.onSave.bind(this);
         this.accessChange= this.accessChange.bind(this);
     }
 
-
+    componentWillMount() {
+        this.props.makeUrl({clearData: true});
+    }
     onSave(event) {
         event.preventDefault();
         this.props.makeUrl(this.state);
@@ -43,57 +47,80 @@ class MakeUrl extends Component {
       });
     }
     changeDate = (date) => {
-      console.log(date);
       if(date.valueOf() < new Date().valueOf()){
-        console.log(this.state.expiryDate);
         return;
       }
       this.setState({
         expiryDate: date
       });
     }
+    expiryDateChange = () => {
+      this.setState({
+        allowExpiryDate: !this.state.allowExpiryDate
+      });
+    }
     render() {
-        if(this.props.shortUrl && this.props.originalUrl){
-          return(
-            <div>
-              {this.props.shortUrl}
-              {this.props.originalUrl}
-            </div>
-          )
-        }
-
         return (
             <div className="url_generation_panel">
                 <div className="make_url">
-                    <form className="form" onSubmit={this.handleSubmit}>
-                        <div className="input-field">
-                            <input  autoFocus onChange={this.onChange} value={this.state.originalUrl} name="url"/>
-                            <label className="email">Long Url</label>
+                    {
+                      this.props.shortUrl && this.props.originalUrl &&
+                      <div id="madeUrlSection">
+                        <div id="originalUrl" className="card horizontal">
+                          <div className="card-image lab">Original Url: </div>
+                          <div className="card-stacked"> <div className="card-content">{this.props.originalUrl}</div></div>
                         </div>
-                        <div className="input">
-                            <Checkbox checked={ this.state.allowAccessControl } onClick={ this.accessChange } />
-                            <label className="access-control">Allow Access Control</label>
+                        <div id="shortUrl" className="card horizontal">
+                          <div className="card-image lab">Short Url: </div>
+                          <div className="card-stacked"> <div className="card-content">{this.props.shortUrl}</div></div>
+                        </div>
+                        <div>
+                          <CopyToClipboard text={this.props.shortUrl}>
+                            <Button type="submit" className="submit_btn">Copy short Url to clipboard</Button>
+                          </CopyToClipboard>
+                          <Link className="btn" to="/dashboard">Make Another Url</Link>
                         </div>
 
-                        {
-                          this.state.allowAccessControl &&
-
+                      </div>
+                    }
+                    {
+                      !this.props.shortUrl && !this.props.originalUrl &&
+                      <form className="form" onSubmit={this.handleSubmit}>
                           <div className="input-field">
-                            <input  autoFocus onChange={this.onChange} value={this.state.accessEmails} name="accessEmails"/>
-                            <label className="access-email">Allowed Emails</label>
+                              <input type="url" onChange={this.onChange} value={this.state.originalUrl} name="url"/>
+                              <label className="url">Paste a link to shorten</label>
                           </div>
-                        }
+                          <div className="input">
+                              <Checkbox checked={ this.state.allowAccessControl } onClick={ this.accessChange } />
+                              <label className="access-control">Allow Access Control</label>
+                          </div>
 
-                        <Button type="submit" className="login_btn" onClick={this.onSave}>Submit</Button>
-                        <Link to="/dashboard" className="btn ">Cancel</Link>
-                    </form>
-                    <div>
-                      <Calendar
-                        onChange={this.changeDate}
-                        value={this.state.expiryDate || new Date()}
-                        name="expiryDate"
-                      />
-                    </div>
+                          {
+                            this.state.allowAccessControl &&
+
+                            <div className="input-field">
+                              <input type="text" autoFocus onChange={this.onChange} value={this.state.accessEmails} name="accessEmails"/>
+                              <label className="accessEmails">Allowed Emails</label>
+                            </div>
+                          }
+                          <div>
+                            <div className="input">
+                                <Checkbox checked={ this.state.allowExpiryDate } onClick={ this.expiryDateChange } />
+                                <label className="access-control">Add Expiry Date</label>
+                            </div>
+                            {
+                              this.state.allowExpiryDate &&
+                              <Calendar
+                                onChange={this.changeDate}
+                                value={this.state.expiryDate || new Date()}
+                                name="expiryDate"
+                              />
+                            }
+                          </div>
+                          <Button type="submit" className="submit_btn" onClick={this.onSave}>Submit</Button>
+                          <Link to="/dashboard" className="btn ">Cancel</Link>
+                      </form>
+                    }
                 </div>
             </div>
         );

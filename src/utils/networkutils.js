@@ -17,13 +17,12 @@ export function networkCall(requestParams, success, failure, callback) {
                 status_code: status
             })
         }).catch(async (error) => {
-          if (error.response.status == 401) {
-            dispatch({
-                type: actionTypes.LOG_IN_FAILURE,
-                payload: error,
-                status_code: error.response.status
-            })
-          }
+
+          dispatch({
+              type: error.response.status == 401 ? actionTypes.LOG_IN_FAILURE : failure,
+              payload: error,
+              status_code: error.response.status
+          })
         });
     };
 }

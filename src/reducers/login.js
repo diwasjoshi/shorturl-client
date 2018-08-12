@@ -7,6 +7,7 @@ export default function (state = {}, action) {
                 ...state, 'login': action.payload.data
                 , 'loggedIn': true
             };
+        case actionTypes.LOGOUT:
         case actionTypes.LOG_IN_FAILURE:
             return {
                 ...state, 'login': action.payload.data

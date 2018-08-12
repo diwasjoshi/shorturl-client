@@ -9,7 +9,7 @@ export default function (state = {}, action) {
         case actionTypes.FETCH_URL_DETAILS_FAILURE:
         default:
             return {
-                ...state, 'urldata': {}
+                ...state, 'urldata': null
             };
     }
 }

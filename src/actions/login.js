@@ -2,7 +2,15 @@ import axios from 'axios';
 import * as constants from '../constants/serviceUrls'
 import * as actionTypes from '../constants/actionTypes';
 
-export function loginUser(email, password) {
+export function loginUser(email, password, action="login") {
+    if(action==='logout'){
+      return (dispatch) => {
+        dispatch({
+          type: actionTypes.LOGOUT,
+          payload: {},
+        })
+      }
+    }
     var bodyFormData = {
       'email': email,
       'password': password

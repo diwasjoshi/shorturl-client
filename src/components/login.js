@@ -38,8 +38,6 @@ class Login extends Component {
             return <Redirect to={'/dashboard'}/>
         } else {
             return (
-
-
                 <div className="login_panel">
                     <div className="login">
                         <form className="form" onSubmit={this.handleSubmit}>
@@ -56,7 +54,7 @@ class Login extends Component {
                                 <label className="password">Password</label>
                             </div>
 
-                            <Button type="submit" className="login_btn" onClick={this.onSave}>Launch</Button>
+                            <Button type="submit" className="submit_btn" onClick={this.onSave}>Submit</Button>
                             <span className="register">Dont have an account?
                                <Link to="/signup">SignUp</Link>
                            </span>

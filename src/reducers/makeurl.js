@@ -11,6 +11,10 @@ export default function (state = {}, action) {
             return {
                 ...state, 'shortUrl': action.payload.url
             };
+        case actionTypes.CLEAR_DATA:
+            return {
+                ...state, 'shortUrl': null, 'originalUrl': null
+            };
         default:
             return state;
     }

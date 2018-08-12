@@ -7,7 +7,7 @@ export function getUrlDetails(shortUrl) {
     const requestParams = {
         method: 'post',
         url: `${constants.BASE_URL}/geturldata`,
-        data: {shortCode: shortUrl.replace(keys.SHORT_URLS_HOST + '/', "")}
+        data: {shortUrl: shortUrl}
     };
 
     return networkCall(requestParams, actionTypes.FETCH_URL_DETAILS_SUCCESS, actionTypes.FETCH_URL_DETAILS_FAILURE);
