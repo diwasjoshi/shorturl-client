@@ -115,7 +115,10 @@ body {
   margin: auto;
   box-shadow: 20px 20px 30px 1px #ccc;
   border-radius: 10px;
-  height: calc(100% - 100px);
+  height: calc(100vh - 100px);
+}
+.UrlAnalyitcsPage{
+  height: calc(100% - 100px) !important;
 }
 .userURLPage .create-url{
   margin-top: 20px;
