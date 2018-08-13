@@ -6,16 +6,15 @@ export default function (state = {}, action) {
             return {
                 ...state, 'shortUrl': action.payload.shortUrl, 'originalUrl': action.payload.originalUrl
             };
-        case actionTypes.FETCH_USER_URLS_FAILURE:
+        case actionTypes.MAKE_URLS_FAILURE:
             //show call failed
             return {
-                ...state, 'shortUrl': action.payload.url
+                ...state, makeUrlError: action.payload.response.data.error
             };
         case actionTypes.CLEAR_DATA:
-            return {
-                ...state, 'shortUrl': null, 'originalUrl': null
-            };
         default:
-            return state;
+            return {
+                ...state, 'shortUrl': null, 'originalUrl': null, 'makeUrlError': null
+            };
     }
 }

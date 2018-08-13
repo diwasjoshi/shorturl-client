@@ -3,7 +3,7 @@ import * as constants from '../constants/serviceUrls'
 import * as actionTypes from '../constants/actionTypes';
 import {networkCall} from '../utils/networkutils';
 
-export function makeUrl({ url, accessEmails, allowAccessControl, allowExpiryDate, expiryDate, clearData }) {
+export function makeUrl({ url, accessEmails, allowAccessControl, allowExpiryDate, expiryDate, clearData, allowCustomPath, customPath }) {
     if(clearData){
       return (dispatch) => {
         dispatch({
@@ -13,6 +13,8 @@ export function makeUrl({ url, accessEmails, allowAccessControl, allowExpiryDate
       }
     }
     var bodyFormData = { url };
+    if(allowCustomPath)
+      bodyFormData['customPath'] = customPath;
     if(allowAccessControl)
       bodyFormData['privateEmails'] = accessEmails.split(',');
     if(allowExpiryDate)

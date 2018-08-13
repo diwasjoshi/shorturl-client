@@ -1,3 +1,4 @@
+import * as keys from '../constants/keys';
 import React, {Component, PropTypes} from 'react';
 import {Button, FormGroup, FormControl, ControlLabel} from "react-bootstrap";
 import {bindActionCreators} from 'redux';
@@ -25,7 +26,9 @@ class MakeUrl extends Component {
             allowAccessControl: false,
             expiryDate: null,
             clearData: false,
-            allowExpiryDate: false
+            allowExpiryDate: false,
+            allowCustomPath: false,
+            customPath: ""
         };
 
         this.onSave = this.onSave.bind(this);
@@ -50,6 +53,11 @@ class MakeUrl extends Component {
     accessChange = () => {
       this.setState({
         allowAccessControl: !this.state.allowAccessControl
+      });
+    }
+    customPathChange = () => {
+      this.setState({
+        allowCustomPath: !this.state.allowCustomPath
       });
     }
     changeDate = (date) => {
@@ -107,19 +115,37 @@ class MakeUrl extends Component {
                               <input type="url" onChange={this.onChange} value={this.state.originalUrl} name="url"/>
                               <label className="url">Paste a link to shorten</label>
                           </div>
-                          <div className="input">
-                              <Checkbox checked={ this.state.allowAccessControl } onClick={ this.accessChange } />
-                              <label className="access-control">Allow Access Control</label>
+
+                          <div>
+                              <div className="input">
+                                  <Checkbox checked={ this.state.allowCustomPath } onClick={ this.customPathChange } />
+                                  <label className="access-control">Custom Path</label>
+                              </div>
+
+                              {
+                                this.state.allowCustomPath &&
+
+                                <div className="input-field">
+                                  <input type="text" autoFocus onChange={this.onChange} value={this.state.customPath} name="customPath"/>
+                                  <label className="customPath">{keys.SHORT_URLS_HOST + this.state.customPath}</label>
+                                </div>
+                              }
                           </div>
+                          <div>
+                              <div className="input">
+                                  <Checkbox checked={ this.state.allowAccessControl } onClick={ this.accessChange } />
+                                  <label className="access-control">Allow Access Control</label>
+                              </div>
 
-                          {
-                            this.state.allowAccessControl &&
+                              {
+                                this.state.allowAccessControl &&
 
-                            <div className="input-field">
-                              <input type="text" autoFocus onChange={this.onChange} value={this.state.accessEmails} name="accessEmails"/>
-                              <label className="accessEmails">Allowed Emails</label>
-                            </div>
-                          }
+                                <div className="input-field">
+                                  <input type="text" autoFocus onChange={this.onChange} value={this.state.accessEmails} name="accessEmails"/>
+                                  <label className="accessEmails">Allowed Emails</label>
+                                </div>
+                              }
+                          </div>
                           <div>
                             <div className="input">
                                 <Checkbox checked={ this.state.allowExpiryDate } onClick={ this.expiryDateChange } />
@@ -132,6 +158,12 @@ class MakeUrl extends Component {
                                 value={this.state.expiryDate || new Date()}
                                 name="expiryDate"
                               />
+                            }
+                          </div>
+                          <div>
+                            {
+                              this.props.makeUrlError &&
+                              <div>{this.props.makeUrlError}</div>
                             }
                           </div>
                           <Button type="submit" className="submit_btn" onClick={this.onSave}>Submit</Button>
@@ -154,6 +186,7 @@ function mapStateToProps(state) {
     return {
         originalUrl: state.makeUrl.originalUrl,
         shortUrl: state.makeUrl.shortUrl,
+        makeUrlError: state.makeUrl.makeUrlError,
         isLoggedIn: state.reducerLogin.loggedIn
     };
 }
