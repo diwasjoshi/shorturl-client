@@ -163,7 +163,7 @@ class MakeUrl extends Component {
                           <div>
                             {
                               this.props.makeUrlError &&
-                              <div>{this.props.makeUrlError}</div>
+                              <div style={{color:'red'}}>{this.props.makeUrlError}</div>
                             }
                           </div>
                           <Button type="submit" className="submit_btn" onClick={this.onSave}>Submit</Button>
