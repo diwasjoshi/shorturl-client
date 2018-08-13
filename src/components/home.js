@@ -11,6 +11,9 @@ import Calendar from 'react-datetime-picker';
 import backImage from '../assets/images/image2.png';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import {Link} from 'react-router-dom';
+import AppBar from 'muicss/lib/react/appbar';
+
+import MenuOptions from './menuoptions';
 
 var styles = {
   backgroundImage: 'url(' + backImage + ')'
@@ -63,7 +66,15 @@ class Home extends Component {
       }
 
       return(
-        <div className="url_generation_panel">
+        <div>
+          <AppBar style={styles} id="app-header"position="static" height="100%" width="100%">
+              <div id="header-section">
+                <div id="main-heading">shortURL</div>
+                <div id="sub-heading">create short urls in seconds.</div>
+              </div>
+              <MenuOptions />
+          </AppBar>
+          <div className="url_generation_panel">
             <div className="make_url">
                 {
                   this.props.shortUrl && this.props.originalUrl &&
@@ -111,6 +122,7 @@ class Home extends Component {
                   </form>
                 }
             </div>
+          </div>
         </div>
       )
     }

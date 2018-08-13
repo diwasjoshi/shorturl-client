@@ -16,26 +16,22 @@ class UrlRedirection extends Component {
       }
 
     componentWillMount() {
-        console.log(this.props.match.params.shortcode);
         this.props.urlRedirection(this.props.match.params.shortcode);
     }
 
     render() {
-      if(!this.props.redirectionUrl.status){
-        return (
-          <div>Loading...</div>
-        )
-      }
       if(this.props.redirectionUrl.status === "success"){
         return (
           <Redirection redirectionUrl={this.props.redirectionUrl.url}/>
         )
       }
 
-      return (
-        <div> Url not found </div>
-      )
-
+      if(this.props.redirectionUrl.status === "failure"){
+        return (
+          <div> Url not found </div>
+        )
+      }
+      return <div/>
     }
 }
 

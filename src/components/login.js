@@ -5,8 +5,13 @@ import {connect} from 'react-redux';
 import {loginUser} from '../actions/login';
 import {withRouter, Redirect} from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import AppBar from 'muicss/lib/react/appbar';
 
-
+import MenuOptions from './menuoptions';
+import backImage from '../assets/images/image2.png'
+var styles = {
+  backgroundImage: 'url(' + backImage + ')'
+};
 
 class Login extends Component {
     constructor(props) {
@@ -38,6 +43,14 @@ class Login extends Component {
             return <Redirect to={'/dashboard'}/>
         } else {
             return (
+                <div>
+                <AppBar style={styles} id="app-header"position="static" height="100%" width="100%">
+                    <div id="header-section">
+                      <div id="main-heading">shortURL</div>
+                      <div id="sub-heading">create short urls in seconds.</div>
+                    </div>
+                    <MenuOptions />
+                </AppBar>
                 <div className="login_panel">
                     <div className="login">
                         <form className="form" onSubmit={this.handleSubmit}>
@@ -61,6 +74,7 @@ class Login extends Component {
 
                         </form>
                     </div>
+                </div>
                 </div>
             );
         }

@@ -28,19 +28,16 @@ var styles = {
 };
 
 export default class App extends Component {
+    componentWillMount(){
+      console.log(this.props);
+    }
     render() {
         return (
               <Router history={history}>
-                  <div>
-                  <AppBar style={styles} id="app-header"position="static" height="100%" width="100%">
-                      <div id="header-section">
-                        <div id="main-heading">shortURL</div>
-                        <div id="sub-heading">create short urls in seconds.</div>
-                      </div>
-                      <MenuOptions />
-                  </AppBar>
+                <div>
+                  
                   <Switch>
-                      {/* HOME */}
+
                       <Route exact path="/">
                           <Route to="/home" component={Home} />
                       </Route>
@@ -51,7 +48,7 @@ export default class App extends Component {
                       <Route path="/makeurl" component={MakeUrl}/>
                       <Route path="/urlanalytics" component={UrlAnalytics}/>
                       <Route path="/logout" component={LogOut}/>
-                      <Route path='/:shortcode' component={UrlRedirection} />
+                      <Route path='/:shortcode' component={UrlRedirection} onEnter={() => console.log('this.props.match.params.shortcode')} />
                   </Switch>
                   </div>
               </Router>

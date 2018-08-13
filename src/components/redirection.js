@@ -8,7 +8,7 @@ export default class Redirection extends Component {
         super(props);
       }
 
-    componentDidMount() {
+    componentWillMount() {
         window.location = this.props.redirectionUrl;
     }
 

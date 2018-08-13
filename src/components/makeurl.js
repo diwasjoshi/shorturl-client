@@ -9,7 +9,13 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Calendar from 'react-datetime-picker';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
+import AppBar from 'muicss/lib/react/appbar';
 
+import MenuOptions from './menuoptions';
+import backImage from '../assets/images/image2.png';
+var styles = {
+  backgroundImage: 'url(' + backImage + ')'
+};
 class MakeUrl extends Component {
     constructor(props) {
         super(props);
@@ -61,6 +67,14 @@ class MakeUrl extends Component {
     }
     render() {
         return (
+            <div>
+            <AppBar style={styles} id="app-header"position="static" height="100%" width="100%">
+                <div id="header-section">
+                  <div id="main-heading">shortURL</div>
+                  <div id="sub-heading">create short urls in seconds.</div>
+                </div>
+                <MenuOptions />
+            </AppBar>
             <div className="url_generation_panel">
                 <div className="make_url">
                     {
@@ -122,6 +136,7 @@ class MakeUrl extends Component {
                       </form>
                     }
                 </div>
+            </div>
             </div>
         );
       }

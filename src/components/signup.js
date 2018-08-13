@@ -4,7 +4,13 @@ import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signup } from '../actions/signup'
+import AppBar from 'muicss/lib/react/appbar';
 
+import MenuOptions from './menuoptions';
+import backImage from '../assets/images/image2.png'
+var styles = {
+  backgroundImage: 'url(' + backImage + ')'
+};
 class SignUp extends Component {
     renderField(field) {
         return (
@@ -30,7 +36,14 @@ class SignUp extends Component {
   render () {
     const { handleSubmit } = this.props;
     return (
-
+      <div>
+      <AppBar style={styles} id="app-header"position="static" height="100%" width="100%">
+          <div id="header-section">
+            <div id="main-heading">shortURL</div>
+            <div id="sub-heading">create short urls in seconds.</div>
+          </div>
+          <MenuOptions />
+      </AppBar>
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
         <Field
@@ -47,6 +60,7 @@ class SignUp extends Component {
         />
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
+      </div>
     )
   }
 

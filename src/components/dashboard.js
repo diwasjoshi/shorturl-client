@@ -8,8 +8,13 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import UrlList from './urllist'
 import {withRouter, Redirect} from 'react-router-dom';
+import AppBar from 'muicss/lib/react/appbar';
 
-
+import MenuOptions from './menuoptions';
+import backImage from '../assets/images/image2.png'
+var styles = {
+  backgroundImage: 'url(' + backImage + ')'
+};
 class DashBoard extends Component {
     constructor(props) {
         super(props);
@@ -27,6 +32,14 @@ class DashBoard extends Component {
           return <Redirect to='/' />
       }
       return (
+        <div>
+        <AppBar style={styles} id="app-header"position="static" height="100%" width="100%">
+            <div id="header-section">
+              <div id="main-heading">shortURL</div>
+              <div id="sub-heading">create short urls in seconds.</div>
+            </div>
+            <MenuOptions />
+        </AppBar>
         <div id="userUrlsSection">
           {
               !this.props.userurls &&
@@ -50,6 +63,7 @@ class DashBoard extends Component {
                 </div>
             </div>
           }
+        </div>
         </div>
       )
 

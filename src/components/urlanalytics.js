@@ -7,9 +7,13 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {BarChart, PieChart, Legend} from 'react-easy-chart';
 
+import AppBar from 'muicss/lib/react/appbar';
 
-
-
+import MenuOptions from './menuoptions';
+import backImage from '../assets/images/image2.png'
+var styles = {
+  backgroundImage: 'url(' + backImage + ')'
+};
 class UrlAnalyitcs extends Component {
     constructor(props) {
         super(props);
@@ -31,11 +35,28 @@ class UrlAnalyitcs extends Component {
     render() {
       if(!this.props.urldetails){
         return (
+          <div>
+          <AppBar style={styles} id="app-header"position="static" height="100%" width="100%">
+              <div id="header-section">
+                <div id="main-heading">shortURL</div>
+                <div id="sub-heading">create short urls in seconds.</div>
+              </div>
+              <MenuOptions />
+          </AppBar>
           <div>Loading...</div>
+          </div>
         )
       }
       if(this.props.urldetails){
         return(
+          <div>
+          <AppBar style={styles} id="app-header"position="static" height="100%" width="100%">
+              <div id="header-section">
+                <div id="main-heading">shortURL</div>
+                <div id="sub-heading">create short urls in seconds.</div>
+              </div>
+              <MenuOptions />
+          </AppBar>
           <div className="UrlAnalyitcsPage">
               <div className="section">
                 <div id="originalUrl" className="card horizontal">
@@ -100,6 +121,7 @@ class UrlAnalyitcs extends Component {
                 </div>
                 <div><Link to="/dashboard" className="btn">Go Back</Link></div>
               </div>
+          </div>
           </div>
         )
       }
