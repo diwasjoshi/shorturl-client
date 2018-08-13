@@ -66,6 +66,9 @@ class MakeUrl extends Component {
       });
     }
     render() {
+        if(!this.props.isLoggedIn){
+            return <Redirect to='/' />
+        }
         return (
             <div>
             <AppBar style={styles} id="app-header"position="static" height="100%" width="100%">
@@ -151,6 +154,7 @@ function mapStateToProps(state) {
     return {
         originalUrl: state.makeUrl.originalUrl,
         shortUrl: state.makeUrl.shortUrl,
+        isLoggedIn: state.reducerLogin.loggedIn
     };
 }
 
