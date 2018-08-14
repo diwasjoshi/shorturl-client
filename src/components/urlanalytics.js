@@ -61,7 +61,7 @@ class UrlAnalyitcs extends Component {
               <div className="section">
                 <div id="originalUrl" className="card horizontal">
                   <div className="card-image lab">Original Url: </div>
-                  <div className="card-stacked"> <div className="card-content">{this.props.urldetails.originalUrl}</div></div>
+                  <div className="card-stacked"> <div style={{"wordBreak": 'break-all'}} className="card-content">{this.props.urldetails.originalUrl}</div></div>
                 </div>
                 <div id="shortUrl" className="card horizontal">
                   <div className="card-image lab">Short Url: </div>
