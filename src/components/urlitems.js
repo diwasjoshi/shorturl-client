@@ -22,7 +22,7 @@ class UrlItem extends Component {
             <div id="madeUrlSection">
                 <div id="originalUrl" className="card horizontal">
                   <div className="card-image lab">Original Url: </div>
-                  <div className="card-stacked"> <div className="card-content">{this.props.data.originalUrl}</div></div>
+                  <div className="card-stacked"> <div style={{"word-break": 'break-all'}} className="card-content">{this.props.data.originalUrl}</div></div>
                 </div>
                 <div id="shortUrl" className="card horizontal">
                   <div className="card-image lab">Short Url: </div>
