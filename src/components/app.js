@@ -35,7 +35,7 @@ class App extends Component {
     componentWillMount(){
       let dynamicParam = window.location.href.replace(keys.SHORT_URLS_HOST, "");
       if(['login', 'signup', 'dashboard', 'makeurl', 'urlanalytics', 'logout'].includes(dynamicParam))
-        return;
+        return false;
 
       this.props.urlRedirection(dynamicParam);
       if(this.props.redirectionUrl !== undefined && this.props.redirectionUrl.status === "success")
@@ -44,14 +44,14 @@ class App extends Component {
     componentDidUpdate(){
       let dynamicParam = window.location.href.replace(keys.SHORT_URLS_HOST, "");
       if(['login', 'signup', 'dashboard', 'makeurl', 'urlanalytics', 'logout'].includes(dynamicParam))
-        return;
+        return false;
       if(this.props.redirectionUrl !== undefined && this.props.redirectionUrl.status === "success")
         window.location = this.props.redirectionUrl.url;
     }
     shouldComponentUpdate(){
       let dynamicParam = window.location.href.replace(keys.SHORT_URLS_HOST, "");
       if(['login', 'signup', 'dashboard', 'makeurl', 'urlanalytics', 'logout'].includes(dynamicParam))
-        return;
+        return false;
       if(this.props.redirectionUrl !== undefined && this.props.redirectionUrl.status === "success")
         window.location = this.props.redirectionUrl.url;
     }
