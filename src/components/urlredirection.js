@@ -25,7 +25,10 @@ class UrlRedirection extends Component {
       }
 
     componentWillMount() {
-        this.props.urlRedirection(this.props.match.params.shortcode);
+        if(this.props.redirectionUrl !== undefined && this.props.redirectionUrl.status === "success")
+          window.location = this.props.redirectionUrl.url;
+        else
+          this.props.urlRedirection(this.props.match.params.shortcode);
     }
 
     render() {

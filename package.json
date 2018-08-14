@@ -78,6 +78,7 @@
     "react-easy-chart": "^1.0.0",
     "react-faux-dom": "^4.1.0",
     "react-fusioncharts": "^1.0.5",
+    "react-https-redirect": "^1.0.10",
     "react-materialize": "^2.2.0",
     "react-modal": "^3.4.4",
     "react-particles-js": "^2.1.2",
